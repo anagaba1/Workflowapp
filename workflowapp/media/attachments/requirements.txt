@@ -1,0 +1,5 @@
+Django==4.0.4
+django_fsm==2.8.1
+django_fsm_log==3.1.0
+pandas==1.5.2
+pytz==2022.7

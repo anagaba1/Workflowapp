@@ -1,0 +1,63 @@
+https://sweetcode.io/django-postgresql-migration-from-sqlite/
+
+
+
+df2 = pd.read_csv('\\\heron\ABC\\PAS_mis.csv',sep=",",engine='python')
+#eliminates leading zeros
+df=pd.read_csv('C:/WORK/PAS/REGDATA//MemberCompJDEReg.txt', encoding='latin1', delimiter='|', error_bad_lines=False)
+
+
+streamlit run payeapp.py --server.port 8502
+
+reconcile_paye("1000130475","NS017981BAK", "2019-06-01", "2022-05-01")
+
+
+       df8 = pd.DataFrame(columns =['EmployerName','EmployerTin','EMPLOYERNO','CPERIOD','TOTALCONTRIBUTIONS',\
+                                 'URA_based_15','NSSFNUMBER','EmployeeTIN','MoneyDifference','MembersDiffernce'])
+
+    
+    df8['MoneyDifference']=df8['URA_based_15']-df8['TOTALCONTRIBUTIONS']
+    df8['MembersDiffernce']=df8['EmployeeTIN']-df8['NSSFNUMBER']
+
+    Total_Money_Difference = df8['MoneyDifference'].sum()
+    Total_Member_Difference = df8['MembersDiffernce'].sum()
+
+    df9 = pd.DataFrame({
+        'Name': ['Total Money Difference', 'Total Member Difference'],
+        'Total': [Total_Money_Difference, Total_Member_Difference] })
+
+
+    st.write(df9)
+
+streamlit run payeapp.py --server
+
+http://localhost:82/
+
+s_sserwadda
+sserwadda@nssfug.org
+twib@311
+
+http://heron:8502/
+
+https://www.youtube.com/watch?v=9k1knZDje60
+
+If you are using SQLite database with IIS, both the database file and the directory where it is located need to be writable by IIS. This is because SQLite requires write access to the database file and the directory where it is located to perform operations such as creating tables, inserting data, updating records, etc.
+
+To ensure that the database file and directory are writable by IIS, you can follow these steps:
+
+Identify the location of the SQLite database file on your server.
+Right-click on the directory where the SQLite database file is located and select "Properties".
+Go to the "Security" tab and click on the "Edit" button.
+Click on the "Add" button and enter "IIS AppPool{AppPoolName}" (replace {AppPoolName} with the name of your IIS application pool) in the "Enter the object names to select" field.
+Click on the "Check Names" button to validate the IIS application pool account.
+Click on the "OK" button to add the IIS application pool account to the list of users and groups.
+Select the IIS application pool account from the list and check the "Write" permission in the "Permissions for {AppPoolName}" section.
+Click on the "OK" button to save the changes.
+By following these steps, you should be able to ensure that the SQLite database file and directory are writable by IIS and that your application can perform the necessary database operations.
+
+
+
+ALLOWED_HOSTS = ['*']
+
+port number postgress 5432
+master password postgress ismi@311

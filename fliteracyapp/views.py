@@ -131,3 +131,16 @@ def event_details(request, event_id):
         return HttpResponseRedirect(request.path)  # Redirect to the same page after deletion
 
     return render(request, 'event_details3.html', {'event': event, 'attendees': attendees, 'search_form': search_form, 'results': results, 'register_form': register_form, 'attachments': attachments})
+
+
+def membersearch(request):
+
+    # Initialize form for searching members
+    search_form = SearchMemberForm(request.GET or None)
+    results = []
+    if request.method == "GET":
+        if search_form.is_valid():
+            query = search_form.cleaned_data['q']
+            results = Nssfmember.objects.filter(name__icontains=query)
+
+    return render(request, 'membersearch.html', {'search_form': search_form, 'results': results})

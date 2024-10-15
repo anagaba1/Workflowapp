@@ -16,3 +16,4 @@ workflows/migrations/
 openmarket/migrations/
 workflowapp/migrations/
 virtual/
+media/attachments

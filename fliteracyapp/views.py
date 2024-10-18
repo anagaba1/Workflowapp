@@ -24,10 +24,9 @@ def addEvent(request):
             fl_event.save()
             # If you need to handle attachments separately, do it here
             attachments = request.FILES.getlist('attachments')
-            # And then save each attachment with the corresponding event
-
             for attachment in attachments:
-                Attachment.objects.create(fl_event=fl_event, file=attachment)
+                Attachment.objects.create(fm=fm, file=attachment)
+            # And then save each attachment with the corresponding event
             
             messages.success(request, 'FL Event Added Successfully')
             return redirect('addEvent')  # Redirect after successful form submission
@@ -63,7 +62,10 @@ def editEvent(request, id):
             # And then save each attachment with the corresponding event
 
             for attachment in attachments:
-                Attachment.objects.create(fl_event=fl_event, file=attachment)
+                # Handle each file here
+                instance = Fl_event(file=attachment)
+                instance.save()
+            return redirect('success_url')
                 
             messages.success(request, 'Event Record Updated')
             return redirect('addEvent')

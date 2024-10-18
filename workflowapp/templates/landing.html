@@ -126,11 +126,12 @@
 
         {% endif %}
 
-        {% if user|user_in_group:'Supervisors' %}
+        {% if user|user_in_group:'supervisors' %}
 
         <div class="box">
             <a href="/sview"><h3>Employer closure</h3></a>
         </div>
+
 
         {% endif %}
 
@@ -153,7 +154,7 @@
         {% if user|user_in_group:'Financial Advisors' %}
 
         <div class="box">
-            <a href="/addEvent"><h3>Finacial Lieracy Events</h3></a>
+            <a href="/addEvent"><h3>Finacial Literacy Events</h3></a>
         </div>
  
         {% endif %}

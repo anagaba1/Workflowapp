@@ -87,6 +87,8 @@ def view_wbcases(request):
 
 
     # Determine which template to render based on the user's group
+    if request.user.groups.filter(name='supervisors').exists():
+        return render(request, 'view_wbcases_auditor.html', context)
     if request.user.groups.filter(name='Auditors').exists():
         return render(request, 'view_wbcases_auditor.html', context)
     elif request.user.groups.filter(name='WB profiler').exists():
@@ -313,7 +315,11 @@ def close_by_auditor(request, pk):
             # Handle file attachments if any
             attachments = request.FILES.getlist('attachments')
             for attachment in attachments:
-                Attachment.objects.create(file=attachment, whistleblowerLog=whistleblowerLog)
+                Attachment.objects.create(form=form, file=attachment)
+            
+            # attachments = request.FILES.getlist('attachments')
+            # for attachment in attachments:
+            #     Attachment.objects.create(file=attachment, whistleblowerLog=whistleblowerLog)
 
             
             messages.success(request, "Closure case submitted successifully")
@@ -555,7 +561,11 @@ def cases_with_comments_this_month(request):
         # Filter the cases where bi_auditor_user_id matches the current user's ID
         wbdata = wbdata.filter(bi_auditor_user_id=str(request.user.id))
         headline = 'Whistleblower cases you have sent feedback this month'
+    
 
+        # Filter the cases where bi_auditor_user_id matches the current user's ID
+        wbdata = wbdata.filter(bi_auditor_user_id=str(request.user.id))
+        headline = 'Whistleblower cases you have sent feedback this month'
     context = {
         'wbdata': wbdata,
         'headline': headline,
@@ -571,6 +581,7 @@ def cases_with_comments_this_month(request):
         return render(request, 'view_wbcases_profiler.html', context)
     elif request.user.groups.filter(name='WB reviewer').exists():
         return render(request, 'view_wbcases_reviewer.html', context)
+    
 
     else:
         # Handle the case when the user does not belong to any specific group
